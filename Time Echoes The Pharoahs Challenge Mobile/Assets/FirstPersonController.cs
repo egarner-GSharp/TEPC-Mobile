@@ -47,6 +47,33 @@ public class FirstPersonController : MonoBehaviour
         GetTouchInput();
 
 
+        //Running game in editor
+        if (Application.isEditor)
+        {
+            //check for WASD keys and move accordingly
+            Vector3 move = new Vector3(
+                Input.GetKey(KeyCode.A) ? -1 : (Input.GetKey(KeyCode.D) ? 1 : 0),
+                0,
+                Input.GetKey(KeyCode.W) ? 1 : (Input.GetKey(KeyCode.S) ? -1 : 0)
+            ) * moveSpeed * Time.deltaTime;
+            characterController.Move(transform.TransformDirection(move));
+
+            if (characterController.isGrounded == false)
+            {
+                characterController.Move(gravity);
+            }
+
+            // Check for mouse movement and rotate camera
+            float mouseMoveX = Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
+            float mouseMoveY = Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
+
+            cameraPitch = Mathf.Clamp(cameraPitch - mouseMoveY, -90f, 90f);
+            cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
+
+            // horizontal (yaw) rotation
+            transform.Rotate(transform.up, mouseMoveX);
+        }
+
         if (rightFingerId != -1)
         {
             // Ony look around if the right finger is being tracked
@@ -60,6 +87,7 @@ public class FirstPersonController : MonoBehaviour
             Debug.Log("Moving");
             Move();
         }
+
     }
 
     void GetTouchInput()
