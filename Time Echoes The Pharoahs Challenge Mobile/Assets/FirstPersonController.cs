@@ -64,8 +64,8 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // Check for mouse movement and rotate camera
-            float mouseMoveX = Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
-            float mouseMoveY = Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
+            float mouseMoveX = Input.GetAxis("Mouse X") * cameraSensitivity * 10 * Time.deltaTime;
+            float mouseMoveY = Input.GetAxis("Mouse Y") * cameraSensitivity * 10 * Time.deltaTime;
 
             cameraPitch = Mathf.Clamp(cameraPitch - mouseMoveY, -90f, 90f);
             cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
