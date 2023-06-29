@@ -16,6 +16,7 @@ public class Narrator : MonoBehaviour
 
     private AudioSource audioSource; // The AudioSource to play the voice lines on
     private int currentLine = 0; // The current voice line index
+    private bool isPlaying = false; // Whether a voice line is currently playing
 
     private void Start()
     {
@@ -31,16 +32,25 @@ public class Narrator : MonoBehaviour
 
     public void OnTrigger(string trigger)
     {
+        // Check if a voice line is currently playing
+        if (isPlaying)
+        {
+            return; // If a voice line is playing, ignore new triggers
+        }
+
         // Check if the trigger matches the current voice line's trigger
         if (currentLine < voiceLines.Length && voiceLines[currentLine].trigger == trigger)
         {
-            // Play the voice line
+            // Play the current voice line
             StartCoroutine(PlayVoiceLine());
         }
     }
 
     private IEnumerator PlayVoiceLine()
     {
+        // Set the playing flag to true
+        isPlaying = true;
+
         // Play the current voice line
         audioSource.clip = voiceLines[currentLine].voiceLine;
         audioSource.Play();
@@ -50,6 +60,9 @@ public class Narrator : MonoBehaviour
 
         // Move to the next voice line
         currentLine++;
+
+        // Set the playing flag to false
+        isPlaying = false;
 
         // If the next line's trigger is empty, play it immediately
         if (currentLine < voiceLines.Length && string.IsNullOrEmpty(voiceLines[currentLine].trigger))

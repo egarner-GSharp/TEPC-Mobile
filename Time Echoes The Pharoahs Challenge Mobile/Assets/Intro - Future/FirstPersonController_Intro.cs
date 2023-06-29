@@ -73,8 +73,6 @@ public class FirstPersonController_Intro : MonoBehaviour
             float mouseMoveX = Input.GetAxis("Mouse X") * cameraSensitivity * 10 * Time.deltaTime;
             float mouseMoveY = Input.GetAxis("Mouse Y") * cameraSensitivity * 10 * Time.deltaTime;
 
-            //Move VO Along
-            //narrator.OnTrigger("RightSide");
 
             cameraPitch = Mathf.Clamp(cameraPitch - mouseMoveY, -90f, 90f);
             cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
@@ -87,7 +85,7 @@ public class FirstPersonController_Intro : MonoBehaviour
         {
             // Only look around if the right finger is being tracked
             Debug.Log("Rotating");
-            narrator.OnTrigger("Right");
+            //narrator.OnTrigger("Right");
 
 
             LookAround();
@@ -97,7 +95,7 @@ public class FirstPersonController_Intro : MonoBehaviour
         {
             // Only move if the left finger is being tracked
             Debug.Log("Moving");
-            narrator.OnTrigger("Left");
+            //narrator.OnTrigger("Left");
 
             Move();
         }
@@ -121,6 +119,8 @@ public class FirstPersonController_Intro : MonoBehaviour
                     {
                         // Start tracking the left finger if it was not previously being tracked
                         leftFingerId = t.fingerId;
+                        //narrator.OnTrigger("Left");
+
 
                         // Set the start position for the movement control finger
                         moveTouchStartPosition = t.position;
@@ -129,6 +129,8 @@ public class FirstPersonController_Intro : MonoBehaviour
                     {
                         // Start tracking the rightfinger if it was not previously being tracked
                         rightFingerId = t.fingerId;
+                        //narrator.OnTrigger("Right");
+
                     }
 
                     break;
@@ -178,6 +180,8 @@ public class FirstPersonController_Intro : MonoBehaviour
     void LookAround()
     {
         narrator.OnTrigger("Right");
+        Debug.Log("Right Side Look Around");
+
         // vertical (pitch) rotation
         cameraPitch = Mathf.Clamp(cameraPitch - lookInput.y, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
@@ -189,6 +193,8 @@ public class FirstPersonController_Intro : MonoBehaviour
     void Move()
     {
         narrator.OnTrigger("Left");
+        Debug.Log("Left Side Move");
+
 
         // Don't move if the touch delta is shorter than the designated dead zone
         if (moveInput.sqrMagnitude <= moveInputDeadZone) return;
