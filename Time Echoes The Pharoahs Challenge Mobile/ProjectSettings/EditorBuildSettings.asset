@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: c850ee8c3b14cc8459e7e186857cf567
-  - enabled: 0
-    path: Assets/Egyptian_Cartoon_Pack/DemoScene/Temple_Inside.unity
-    guid: 5c55b2ee5ffd5c147bda30a4b848d902
-  - enabled: 0
-    path: Assets/Egyptian_Cartoon_Pack/DemoScene/Ancient_Egypt_Exterior.unity
-    guid: ff487f03ae872ec46846801054daca16
   - enabled: 1
-    path: Assets/Intro - Future/Intro - Future.unity
+    path: Assets/Scenes/Intro - Future/Intro - Future.unity
     guid: 11295ec245d716f40ad4fc30b1027097
+  - enabled: 1
+    path: Assets/Scenes/Temple - Past/Temple_Inside.unity
+    guid: 5c55b2ee5ffd5c147bda30a4b848d902
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 884b78ed62fb3e7408d174e04d08999a,
       type: 2}
