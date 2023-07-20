@@ -17,6 +17,7 @@ public class animationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         bool forwardPressed = Input.GetKey("w");
         bool isWalking = animator.GetBool("isWalking");
 
@@ -37,7 +38,7 @@ public class animationStateController : MonoBehaviour
         if (isWalking && !forwardPressed)
         {
             Debug.Log("Pressed W");
-
+        aww
             animator.SetBool("isWalking", false);
         }
 
@@ -70,5 +71,6 @@ public class animationStateController : MonoBehaviour
 
             animator.SetBool("isTalking", false);
         }
+        */
     }
 }

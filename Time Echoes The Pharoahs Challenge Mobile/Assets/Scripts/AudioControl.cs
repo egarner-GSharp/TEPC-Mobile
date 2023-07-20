@@ -47,12 +47,15 @@ public class AudioControl : MonoBehaviour
             // If yes, play the corresponding voice line
             PlayVoiceLine(voiceDictionary[trigger], int.Parse(trigger));
         }
+        //voiceLines[int.Parse(trigger)].playedAlready = true;
+
     }
 
-    private void PlayVoiceLine(AudioClip voiceLine, int trigger)
+    public void PlayVoiceLine(AudioClip voiceLine, int trigger)
     {
         // Play the voice line
         audioSource.PlayOneShot(voiceLine);
+        //yield return new WaitForSeconds(voiceLine.length);
         voiceLines[trigger].playedAlready = true;
 
         //voiceLines[]

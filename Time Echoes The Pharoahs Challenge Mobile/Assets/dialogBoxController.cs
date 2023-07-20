@@ -20,4 +20,12 @@ public class dialogBoxController : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public bool showUI(string good, string neutral, string sarcastic)
+    {
+        
+        gameObject.SetActive(true);
+        return true;
+
+    }
 }
